@@ -1,0 +1,5 @@
+div {
+    display: flex;
+    flex-direction: column;
+    padding: .25rem .5rem;
+}

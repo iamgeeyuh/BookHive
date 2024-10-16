@@ -1,0 +1,11 @@
+ul {
+    background-color: #AF5E36;
+    list-style-type: none;
+    color: #F1C892;
+    font-weight: bold;
+    padding: 1rem 2rem;
+    border-radius: 1rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
