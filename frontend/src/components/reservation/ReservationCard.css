@@ -1,0 +1,71 @@
+.reservation-card {
+    background-color: #f0c189;
+    padding: 1rem;
+    border-radius: 20px;
+    margin-top: 1rem;
+    margin-bottom: 0.5rem;
+    height: 90px;
+    width: 65%;
+    display: flex;
+    justify-content: space-between;
+    flex-direction: row;
+    gap: 0.5rem;
+    align-items: center;
+}
+
+.reservation-info {
+    display: flex;
+    flex-direction: column;
+    font-weight: bold;
+    height: 60px;
+    font-size: 18px;
+    background-color: transparent;
+}
+
+.reservation-actions {
+    display: flex;
+    height: 80px;
+    background-color: transparent;
+}
+
+.room-name{
+    display: flex;
+    width: 200px;
+    height: 20px;
+    background-color: transparent;
+}
+
+.time-range{
+    display: flex;
+    background-color: transparent;
+}
+
+.check-in-button, .edit-cancel-button {
+    background-color: #F2E0CE;
+    padding: 0.5rem 1rem;
+    border-radius: 8px;
+    cursor: pointer;
+    font-weight: bold;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 120px;  
+    margin-bottom: 0.5rem;
+    font-size: 15px;
+}
+
+.check-in-button:hover, .edit-cancel-button:hover {
+    background-color:#AF5E36;
+    color: #4a2e19; 
+}
+
+.faSquareCheck{
+    font-size: 15px;
+    margin-right: 5px;
+}
+
+.faPenToSquare{
+    font-size: 15px; 
+    margin-right: 5px;
+}
+
