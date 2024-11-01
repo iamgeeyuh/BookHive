@@ -1,20 +1,9 @@
-h1 {
-    color: #AF5E36;
-    font-size: 3.5rem;
-    margin: 0rem;
-}
-
-h2 {
-    font-size: 1.75rem;
-    margin: 0rem;
-    margin-bottom: 1rem;
-}
-
 .info {
     display: flex;
     flex-direction: row;
     align-items: center;
     height: 1.5rem;
+    margin-bottom: 1rem;
 }
 
 .info p {
@@ -25,12 +14,25 @@ h2 {
     display: flex;
     flex-direction: column;
     justify-content: space-between;
+    height: 95%;
+}
+
+.container p {
+    font-size: 1.25rem;
 }
 
 .top {
     height: auto;
 }
 
-p {
-    font-size: 1.25rem;
+.top h1 {
+    color: #AF5E36;
+    font-size: 3.5rem;
+    margin: 0rem;
+}
+
+.top h2 {
+    font-size: 1.75rem;
+    margin: 0rem;
+    margin-bottom: 2rem;
 }
