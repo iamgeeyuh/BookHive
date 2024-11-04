@@ -1,4 +1,4 @@
-.info {
+.logged-out-info {
     display: flex;
     flex-direction: row;
     align-items: center;
@@ -6,32 +6,39 @@
     margin-bottom: 1rem;
 }
 
-.info p {
+.logged-out-info p {
     margin-left: .5rem;
 }
 
-.container {
+.logged-out-container {
+    display: flex;
+    flex-direction: row;
+    height: 95%;
+}
+
+.logged-out-container p {
+    font-size: 1.25rem;
+}
+
+.logged-out-description {
     display: flex;
     flex-direction: column;
     justify-content: space-between;
     height: 95%;
+    width: 50%;
 }
 
-.container p {
-    font-size: 1.25rem;
-}
-
-.top {
+.logged-out-description-top {
     height: auto;
 }
 
-.top h1 {
+.logged-out-description-top h1 {
     color: #AF5E36;
     font-size: 3.5rem;
     margin: 0rem;
 }
 
-.top h2 {
+.logged-out-top h2 {
     font-size: 1.75rem;
     margin: 0rem;
     margin-bottom: 2rem;

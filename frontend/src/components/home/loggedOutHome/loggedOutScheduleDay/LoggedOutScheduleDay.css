@@ -1,0 +1,35 @@
+.logged-out-schedule-day-container {
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+    height: auto;
+}
+
+.logged-out-schedule-day-time {
+    display: flex;
+    flex-direction: row;
+    width: 75%;
+    justify-content: space-between;
+    height: auto;
+    padding-right: 7rem;
+    padding-left: 7rem;
+    margin-left: 1rem;
+    margin-right: 1rem;
+}
+
+.logged-out-schedule-day {
+    width: 25%;
+    font-weight: bold;
+}
+
+.logged-out-schedule-day-title {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    height: auto;
+    width: 75%;
+    padding-right: 7.5rem;
+    padding-left: 6rem;
+    color: #AF5E36;
+    font-weight: bold;
+}

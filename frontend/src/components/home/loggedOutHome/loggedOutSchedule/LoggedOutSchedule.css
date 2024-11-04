@@ -1,0 +1,29 @@
+.logged-out-schedule-title {
+    border-style: solid;
+    height: auto;
+    text-align: center;
+    color: #F1C892;
+    background-color: black;
+    font-size: 1.75rem;
+    font-weight: bold;
+    padding: 1rem 2rem 1rem 2rem;
+    border-radius: 1rem;
+    border-width: 0.25rem;
+}
+
+.logged-out-schedule-container {
+    display: flex;
+    flex-direction: column;
+    width: 50%;
+    padding-left: 1rem;
+    margin-left: 1rem;
+    border-left-style: solid;
+    border-color: #AF5E36;
+    border-width: 0.2rem;
+    height: auto;
+}
+
+.logged-out-schedule-table {
+    display: flex;
+    flex-direction: column;
+}
