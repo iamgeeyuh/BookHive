@@ -1,10 +1,14 @@
 import { createContext, useState, useEffect } from "react";
+import { ClipLoader } from "react-spinners";
+
+const Spinner = () => <ClipLoader color="#09f" loading={true} size={35} />;
 
 const UserContext = createContext();
 
 export const UserContextProvider = (props) => {
   const [user, setUser] = useState(null);
   const [isLoggedIn, setIsLoggedIn] = useState(false);
+  const [loading, setLoading] = useState(true);
 
   const checkLoginStatus = async () => {
     try {
@@ -25,12 +29,18 @@ export const UserContextProvider = (props) => {
       console.error("Error checking login status:", error);
       setUser(null);
       setIsLoggedIn(false);
+    } finally {
+      setLoading(false);
     }
   };
 
   useEffect(() => {
     checkLoginStatus();
   }, []);
+
+  if (loading) {
+    return <Spinner />; 
+  }
 
   return (
     <UserContext.Provider value={{ user, setUser, isLoggedIn, setIsLoggedIn }}>

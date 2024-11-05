@@ -1,7 +1,7 @@
 // StudentHomePage.js
 import React, { useEffect, useState } from "react";
 import "./StudentHome.css";
-import ReservationCard from "../../reservation/ReservationCard";
+import ReservationCard from "../reservation/ReservationCard";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faMicroscope } from '@fortawesome/free-solid-svg-icons';
 import { faCalendarCheck } from '@fortawesome/free-regular-svg-icons';

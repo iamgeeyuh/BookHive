@@ -1,6 +1,6 @@
 import { useContext } from "react";
 import "./ProfileDropdown.css";
-import UserContext from "../../context/user-context";
+import UserContext from "../../../context/user-context";
 
 const ProfileDropdown = () => {
   const ctx = useContext(UserContext);

@@ -5,7 +5,7 @@ require("./config/passport");
 const session = require("express-session");
 const connectDB = require("./config/mongodb");
 const authRouter = require("./routes/auth");
-require("dotenv");
+require("dotenv").config();
 
 const app = express();
 const port = 5001;

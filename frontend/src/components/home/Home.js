@@ -1,7 +1,7 @@
 import { useContext } from "react";
 import LoggedOutHome from "./loggedOutHome/LoggedOutHome";
-import StudentHome from "./studentHome/StudentHome";
-import FacultyHome from "./facultyHome/FacultyHome";
+import StudentHome from "../student/studentHome/StudentHome";
+import FacultyHome from "../faculty/facultyHome/FacultyHome";
 import UserContext from "../../context/user-context";
 
 const Home = () => {

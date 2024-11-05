@@ -1,12 +1,26 @@
-ul {
-    background-color: #AF5E36;
+.navbar-items {
     list-style-type: none;
-    color: #F1C892;
-    font-weight: bold;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    padding-left: 0;
+    margin: 0; 
+}
+
+.navbar-container {
+    background-color: #AF5E36;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    height: 2.5rem;
     padding: .5rem 2rem;
     border-radius: 1rem;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    height: 2.5rem;
+    color: #F1C892;
+    font-weight: bold;
+}
+
+.navlink {
+    margin-right: 2rem;
+    text-decoration: none;
+    color: #F1C892;
 }

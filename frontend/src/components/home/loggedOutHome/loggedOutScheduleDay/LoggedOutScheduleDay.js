@@ -12,8 +12,8 @@ const LoggedOutScheduleDay = ({
     <div
       className="logged-out-schedule-day-container"
       style={{
-        "margin-bottom": !isTitle && "0.5rem",
-        "margin-top": !isTitle && "0.5rem",
+        "marginBottom": !isTitle && "0.5rem",
+        "marginTop": !isTitle && "0.5rem",
       }}
     >
       <p className="logged-out-schedule-day" style={{ color: color }}>
@@ -25,7 +25,7 @@ const LoggedOutScheduleDay = ({
             ? "logged-out-schedule-day-title"
             : "logged-out-schedule-day-time"
         }
-        style={{ "background-color": backgroundColor }}
+        style={{ "backgroundColor": backgroundColor }}
       >
         <p>{libraryHours}</p>
         <p>{serviceHours}</p>
