@@ -4,9 +4,11 @@ import "./Root.css";
 
 const Root = () => {
   return (
-    <div>
+    <div className="root">
       <Navbar />
-      <Outlet />
+      <div className="outlet">
+        <Outlet />
+      </div>
     </div>
   );
 };

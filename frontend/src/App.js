@@ -3,7 +3,10 @@ import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import Root from "./components/root/Root";
 import Error from "./components/error/Error";
 import Home from "./components/home/Home";
-import StudentHome from "./components/home/StudentHome";
+import FacultyEquipment from "./components/faculty/equipment/FacultyEquipment";
+import FacultyFeedback from "./components/faculty/feedback/FacultyFeedback";
+import FacultyReservation from "./components/faculty/reservation/FacultyReservation";
+import FacultyRoom from "./components/faculty/rooms/FacultyRoom";
 
 const router = createBrowserRouter([
   {
@@ -12,7 +15,15 @@ const router = createBrowserRouter([
     errorElement: <Error />,
     children: [
       { path: "/", element: <Home /> },
-      { path: "/student-home", element: <StudentHome /> },
+      {
+        path: "faculty",
+        children: [
+          { path: "reservation", element: <FacultyReservation /> },
+          { path: "room", element: <FacultyRoom /> },
+          { path: "equipment", element: <FacultyEquipment /> },
+          { path: "feedback", element: <FacultyFeedback /> },
+        ],
+      },
     ],
   },
 ]);
