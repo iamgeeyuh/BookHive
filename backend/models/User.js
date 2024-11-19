@@ -1,15 +1,15 @@
 const mongoose = require("mongoose");
 
 const userSchema = new mongoose.Schema({
-  googleId: { type: String, required: true, unique: true },
+  googleId: { type: String, required: true },
   email: { type: String, required: true, unique: true },
-  displayName: { type: String, required: true, },
-  firstName: { type: String, required: true, },
-  lastName: { type: String, required: true, },
-  profilePhoto: { type: String, required: true, },
-  role: {type: String, required: true,},
+  displayName: { type: String },
+  firstName: { type: String },
+  lastName: { type: String },
+  profilePhoto: { type: String },
+  role: { type: String, enum: ["faculty", "student"], default: "student" },
+  reservations: [{ type: mongoose.Schema.Types.ObjectId, ref: "Reservation" }],
+  equipment: [{ type: mongoose.Schema.Types.ObjectId, ref: "Equipment" }],
 });
 
-const User = mongoose.model("User", userSchema);
-
-module.exports = User;
+module.exports = mongoose.model("User", userSchema);

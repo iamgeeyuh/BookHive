@@ -1,12 +1,11 @@
 import "./Navbar.css";
-import Button from "../button/Button";
-import { useContext } from "react";
-import UserContext from "../../context/user-context";
+import OvalButton from "../button/OvalButton/OvalButton";
+import { useUser } from "../../context/user-context";
 import ProfileDropdown from "./profileDropdown/ProfileDropdown";
 import { NavLink } from "react-router-dom";
 
 const Navbar = () => {
-  const ctx = useContext(UserContext);
+  const { user, isLoggedIn } = useUser();
 
   const handleLogin = () => {
     window.location.href = `${process.env.REACT_APP_BACKEND_URL}/auth/google`;
@@ -18,7 +17,7 @@ const Navbar = () => {
         <NavLink to="" className="navlink">
           Home
         </NavLink>
-        {ctx.user && ctx.user.role === "faculty" && (
+        {user && user.role === "faculty" && (
           <>
             <NavLink to="faculty/reservation" className="navlink">
               Reservations
@@ -34,7 +33,7 @@ const Navbar = () => {
             </NavLink>
           </>
         )}
-        {ctx.user && ctx.user.role === "student" && (
+        {user && user.role === "student" && (
           <>
             <NavLink to="" className="navlink">
               Reserve
@@ -45,10 +44,10 @@ const Navbar = () => {
           </>
         )}
       </ul>
-      {ctx.isLoggedIn ? (
+      {isLoggedIn ? (
         <ProfileDropdown />
       ) : (
-        <Button label="Login" onClick={handleLogin} />
+        <OvalButton label="Login" onClick={handleLogin} />
       )}
     </div>
   );

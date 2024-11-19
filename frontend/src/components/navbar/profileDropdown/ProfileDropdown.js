@@ -1,9 +1,8 @@
-import { useContext } from "react";
 import "./ProfileDropdown.css";
-import UserContext from "../../../context/user-context";
+import { useUser } from "../../../context/user-context";
 
 const ProfileDropdown = () => {
-  const ctx = useContext(UserContext);
+  const { user, logout } = useUser();
 
   const handleLogout = async () => {
     try {
@@ -15,8 +14,7 @@ const ProfileDropdown = () => {
       );
 
       if (response.ok) {
-        ctx.setUser(null);
-        ctx.setIsLoggedIn(false);
+        logout();
       }
     } catch (error) {
       console.error("Error logging out:", error);
@@ -26,8 +24,8 @@ const ProfileDropdown = () => {
   return (
     <div className="profile-dropdown">
       <div className="profile">
-        <img src={ctx.user.profilePhoto} alt="profile" />
-        <p>{ctx.user.displayName}</p>
+        <img src={user.profilePhoto} alt="profile" />
+        <p>{user.displayName}</p>
       </div>
       <div className="dropdown-menu" onClick={handleLogout}>
         Logout

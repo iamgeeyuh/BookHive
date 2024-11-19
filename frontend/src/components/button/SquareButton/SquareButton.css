@@ -1,0 +1,17 @@
+.square-button {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    font-size: 1rem;
+    padding: 0.5rem 1rem;
+    background-color: #F7ECE2;
+    border-width: .01rem;
+    border-radius: 0.5rem;
+    cursor: pointer;
+}
+
+.square-button:hover {
+    background-color: #F1C892;
+    transition: 0.15s;
+}
