@@ -1,5 +1,6 @@
 const express = require("express");
 const passport = require("passport");
+const isAuthenticated = require("../middleware/isAuthenticated")
 require("dotenv").config();
 
 const router = express.Router();
