@@ -1,0 +1,90 @@
+.faculty-room-edit-container {
+    display: flex;
+    flex-direction: column;
+    height: 95%;
+}
+
+.faculty-room-edit-container div {
+    height: auto;
+}
+
+.faculty-room-edit-input {
+    display: flex;
+    flex-direction: column;
+    margin-right: 1rem;
+}
+
+.faculty-room-edit-input label {
+    font-weight: 500;
+}
+
+.faculty-room-edit-input input {
+    border-radius: 1rem;
+    border: solid;
+    border-width: 0.01rem;
+    padding: 0.5rem 1rem;
+    margin-top: 0.5rem;
+}
+
+.faculty-room-edit-details {
+    display: flex;
+    flex-direction: row;
+    margin-top: 2rem;
+}
+
+.faculty-room-edit-dropdowns {
+    display: flex;
+    flex-direction: row;
+    margin-top: 2rem;
+}
+
+.faculty-room-edit-dropdowns div {
+    margin-right: 1rem;
+}
+
+.faculty-room-edit-main {
+    display:flex;
+    flex-direction: row;
+}
+
+.faculty-room-edit-header {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+
+.faculty-room-edit-header p {
+    margin-left: 1rem;
+    font-weight: 500;
+}
+
+.faculty-room-edit-description {
+    display: flex;
+    flex-direction: column;
+    margin-top: 2rem;
+}
+
+.faculty-room-edit-description label {
+    font-weight: 500;
+}
+
+.faculty-room-edit-description textarea {
+    border-radius: 1rem;
+    border: solid;
+    border-width: 0.01rem;
+    padding: 0.5rem 1rem;
+    margin-top: 0.5rem;
+    width: 70%;
+}
+
+.faculty-room-edit-buttons {
+    display: flex;
+    flex-direction: row;
+    margin-top: 2rem;
+    justify-content: end;
+    width: 70%;
+}
+
+.faculty-room-edit-buttons button {
+    margin-left: 1rem;
+}

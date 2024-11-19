@@ -1,4 +1,4 @@
-.button {
+.oval-button {
   background-color: #F1C892;
   border-radius: 5rem;
   border-style: solid;
@@ -9,7 +9,7 @@
   cursor: pointer;
   }
   
-.button:hover {
+.oval-button:hover {
   background-color: #AF5E36;
   transition: 0.15s;
 }

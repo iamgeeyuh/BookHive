@@ -5,6 +5,7 @@ require("./config/passport");
 const session = require("express-session");
 const connectDB = require("./config/mongodb");
 const authRouter = require("./routes/auth");
+const roomRouter = require("./routes/room")
 require("dotenv").config();
 
 const app = express();
@@ -31,6 +32,7 @@ connectDB()
     app.use(passport.session());
 
     app.use("/auth", authRouter);
+    app.use("/room", roomRouter);
 
     app.listen(port, () => {
       console.log(`Server running on port ${port}`);

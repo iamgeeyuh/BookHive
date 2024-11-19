@@ -7,7 +7,7 @@ const userSchema = new mongoose.Schema({
   firstName: { type: String },
   lastName: { type: String },
   profilePhoto: { type: String },
-  role: { type: String, enum: ["admin", "user"], default: "user" },
+  role: { type: String, enum: ["faculty", "student"], default: "student" },
   reservations: [{ type: mongoose.Schema.Types.ObjectId, ref: "Reservation" }],
   equipment: [{ type: mongoose.Schema.Types.ObjectId, ref: "Equipment" }],
 });
