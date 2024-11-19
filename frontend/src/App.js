@@ -22,7 +22,7 @@ const router = createBrowserRouter([
           {
             path: "reservation",
             element: (
-              <RoleProtectedRoute>
+              <RoleProtectedRoute requiredRole="faculty">
                 <FacultyReservation />
               </RoleProtectedRoute>
             ),
@@ -30,7 +30,7 @@ const router = createBrowserRouter([
           {
             path: "room",
             element: (
-              <RoleProtectedRoute>
+              <RoleProtectedRoute requiredRole="faculty">
                 <FacultyRoom />
               </RoleProtectedRoute>
             ),
@@ -38,7 +38,7 @@ const router = createBrowserRouter([
           {
             path: "equipment",
             element: (
-              <RoleProtectedRoute>
+              <RoleProtectedRoute requiredRole="faculty">
                 <FacultyEquipment />
               </RoleProtectedRoute>
             ),
@@ -46,7 +46,7 @@ const router = createBrowserRouter([
           {
             path: "feedback",
             element: (
-              <RoleProtectedRoute>
+              <RoleProtectedRoute requiredRole="faculty">
                 <FacultyFeedback />
               </RoleProtectedRoute>
             ),
