@@ -26,10 +26,7 @@ router.get('/logout', (req, res) => {
   });
 });
 
-router.get("/status", (req, res) => {
-  if (!req.isAuthenticated()) {
-    return res.status(401).json({ message: "Unauthorized" });
-  }
+router.get("/status", isAuthenticated, (req, res) => {
   res.json({
     user: req.user,
   });
