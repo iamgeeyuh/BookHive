@@ -9,18 +9,18 @@ const roomSchema = new mongoose.Schema({
   },
   type: {
     type: String,
-    enum: ["individual", "group", "large group"],
+    enum: ["Individual Study Room", "Group Study Room", "Large Group Study Room"],
     required: true,
   },
   status: {
     type: String,
-    enum: ["enabled", "disabled", "broken"],
+    enum: ["Enabled", "Disabled", "Broken"],
     required: true,
   },
   features: { type: [String] },
   noiseLevel: {
     type: String,
-    enum: ["quiet", "moderate", "active"],
+    enum: ["Quiet Zone", "Moderate Noise Zone", "Active/Collaborative Zone"],
     required: true,
   },
   description: { type: String },

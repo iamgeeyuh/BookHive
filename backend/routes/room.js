@@ -8,8 +8,6 @@ router.post("/", authorizeRole("faculty"), async (req, res) => {
   try {
     const { number, capacity, type, status, features, noiseLevel, description } = req.body;
 
-    console.log(req.body)
-
     const room = new Room({
       number,
       capacity,
@@ -19,8 +17,6 @@ router.post("/", authorizeRole("faculty"), async (req, res) => {
       noiseLevel,
       description
     });
-
-    console.log(room)
 
     const savedRoom = await room.save();
     res.status(201).json(savedRoom);

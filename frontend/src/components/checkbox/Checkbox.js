@@ -1,35 +1,30 @@
 import "./Checkbox.css";
-import { useState } from "react";
 
-const Checkbox = ({ values, label, style, onChange }) => {
-  const [selectedValues, setSelectedValues] = useState([]);
-
-  const handleCheckboxChange = (value) => {
-    let updatedValues = [...selectedValues];
-    if (updatedValues.includes(value)) {
-      updatedValues = updatedValues.filter((v) => v !== value);
+const Checkbox = ({ values, label, style, onChange, value = [] }) => {
+  const handleCheckboxChange = (selectedValue) => {
+    let updatedValues = [...value];
+    if (updatedValues.includes(selectedValue)) {
+      updatedValues = updatedValues.filter((v) => v !== selectedValue);
     } else {
-      updatedValues.push(value);
+      updatedValues.push(selectedValue);
     }
-    setSelectedValues(updatedValues);
-    onChange(updatedValues);
+    onChange(updatedValues); 
   };
 
   return (
     <div className="checkbox-container" style={style}>
       <label>{label}</label>
-      {values.map((value) => {
-        return (
-          <div className="checkbox-item" key={value.val}>
-            <input
-              type="checkbox"
-              value={value.val}
-              onChange={() => handleCheckboxChange(value.val)}
-            />
-            <label>{value.name}</label>
-          </div>
-        );
-      })}
+      {values.map((option) => (
+        <div className="checkbox-item" key={option.val}>
+          <input
+            type="checkbox"
+            value={option.val}
+            checked={value.includes(option.val)} 
+            onChange={() => handleCheckboxChange(option.val)}
+          />
+          <label>{option.name}</label>
+        </div>
+      ))}
     </div>
   );
 };
