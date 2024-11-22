@@ -1,0 +1,38 @@
+.faculty-room-table-container {
+    width: 100%;
+    text-align: left;
+    border-collapse: collapse; 
+    margin-top: 1rem;
+}
+
+.faculty-room-table-container thead tr {
+    border-bottom: 0.01rem solid #333; 
+}
+
+.faculty-room-table-container th {
+    font-weight: 500; 
+    padding: 1rem 2rem;
+}
+
+.faculty-room-table-container td {
+    padding: 0.5rem 2rem;
+}
+
+.faculty-room-table-container tbody tr {
+    cursor: pointer;
+}
+
+.faculty-room-table-container tbody tr:hover {
+    transition: 0.15s;
+    background-color: #F6F0E9;
+}
+
+.faculty-room-table-container tbody tr td:first-child {
+    border-top-left-radius: 0.5rem; 
+    border-bottom-left-radius: 0.5rem; 
+}
+
+.faculty-room-table-container tbody tr td:last-child {
+    border-top-right-radius: 0.5rem; 
+    border-bottom-right-radius: 0.5rem; 
+}

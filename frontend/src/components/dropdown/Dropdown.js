@@ -1,10 +1,10 @@
 import "./Dropdown.css";
 
-const Dropdown = ({ values, label, onChange }) => {
+const Dropdown = ({ values, label, onChange, value }) => {
   return (
     <div className="dropdown-container">
       <label>{label}</label>
-      <select onChange={(e) => onChange(e.target.value)}>
+      <select value={value} onChange={(e) => onChange(e.target.value)}>
         {values.map((value) => (
           <option value={value.val} key={value.val}>
             {value.name}
