@@ -1,0 +1,139 @@
+.date-picker-modal {
+  position: fixed; /* Use fixed to keep it in view */
+  top: 50%; /* Center vertically */
+  left: 50%; /* Center horizontally */
+  transform: translate(-50%, -50%); /* Offset the transform by 50% of its height and width */
+  z-index: 1050; /* Higher than other content */
+  background-color: white; /* Ensure it’s visible against any background */
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.25);
+  height: auto;
+  width: auto; /* Or specify a width */
+  display: flex; /* Ensure it is not display:none */
+}
+
+.reservation-container {
+    padding: 20px;
+    background-color: transparent; /* Light gray background */
+    display: flex;
+    flex-direction: column;
+    align-items: center; /* Centering the content vertically */
+    height: 95%;
+  }
+  
+  .filter-bar {
+    width: 1000px; /* Full width of its container */
+    height: 40px;
+    padding: 10px 20px; /* Reduced padding for a more compact look */
+    background-color: transparent;
+    margin-top: 20px;
+    margin-left: -25%;
+    margin-bottom: 30px; /* Space before the room grid starts */
+    border-radius: 8px; /* Optional: rounded corners */
+  }
+
+  .filter-label {
+    margin-right: 5px; /* Space between the label and the first dropdown */
+    margin-top: 8px;
+    font-weight: bold;
+    font-size: 20px;
+  }
+  
+  .filter-bar select {
+    margin: 0 8px; /* Reduced margin */
+    padding: 8px 12px; /* Reduced padding for a more compact dropdown */
+    border: 1px solid #ccc; /* Styling the border to be subtle */
+    border-radius: 4px; /* Rounded corners for the select box */
+    font-size: 16px; /* Smaller font size for space efficiency */
+    width: 200px;
+    height: 40px;
+    background-color: #E9956B;
+  }
+  
+  .filter-bar button {
+    padding: 11px 16px; /* Adjusting button padding to match selects */
+    font-size: 16px; /* Matching font size with selects */
+    background-color: #E9956B; /* Light grey background for the button */
+    border: none;
+    border-radius: 4px; /* Rounded corners for the button */
+    cursor: pointer; /* Pointer cursor on hover */
+  }
+
+  .floor-section {
+    position: relative;
+    width: 90%;
+    overflow-x: auto;
+  }
+  
+  .room-grid {
+    display: flex;
+    align-items: stretch;
+    column-gap: 10px;
+    margin-top: 10px;
+    grid-template-columns: repeat(5, 1fr);
+    overflow-x: auto;
+    scroll-behavior: smooth;
+    height: 380px;
+  }
+
+  .arrow {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    cursor: pointer;
+    z-index: 10;
+    background-color: #fff;
+    border: none;
+    border-radius: 50%;
+    padding: 10px;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.2);
+  }
+  
+  .arrow.left {
+    left: 0px;
+  }
+  
+  .arrow.right {
+    right: 0px;
+  }
+  
+  .room-card {
+    flex: 0 0 auto; /* Ensures that the card doesn’t grow or shrink */
+    border-radius: 8px;
+    overflow: hidden;
+    width: 300px;
+    /* height: 360px; */
+    margin-bottom: 10px; /* Reduced vertical margin */
+    height: 100%; /* Fill the height of the container*/
+  }
+
+  .room-card:hover {
+    background-color:#F7ECE2;
+    height: 360px;
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.2);  
+  }
+  
+  .room-card img {
+    margin-left: 10%;
+    margin-top: 8%;
+    width: 80%;
+    height: 210px; /* Set a fixed height for images */
+    object-fit: cover; /* Ensures images cover the area without stretching */
+    border-radius: 8px; /* Match to the room card's border-radius */
+  }
+  
+  .room-info {
+    margin-top: 5px;
+    text-align: center;
+    height: 20%;
+  }
+
+  .room-features svg {
+    margin-right: 10px; /* Adds space to the right of each icon */
+    text-align: center;
+}
+
+
+
+  
