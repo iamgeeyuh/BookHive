@@ -1,5 +1,6 @@
 const express = require("express");
 const passport = require("passport");
+const { isAuthenticated } = require("../middleware/auth");
 require("dotenv").config();
 
 const router = express.Router();
@@ -17,19 +18,16 @@ router.get(
   }
 );
 
-router.get('/logout', (req, res) => {
+router.get("/logout", (req, res) => {
   req.logout((err) => {
-    if (err) return res.status(500).json({ error: 'Failed to log out' });
-    
-    res.clearCookie('connect.sid');
-    res.json({ message: 'Logged out successfully' });
+    if (err) return res.status(500).json({ error: "Failed to log out" });
+
+    res.clearCookie("connect.sid");
+    res.json({ message: "Logged out successfully" });
   });
 });
 
-router.get("/status", (req, res) => {
-  if (!req.isAuthenticated()) {
-    return res.status(401).json({ message: "Unauthorized" });
-  }
+router.get("/status", isAuthenticated, (req, res) => {
   res.json({
     user: req.user,
   });

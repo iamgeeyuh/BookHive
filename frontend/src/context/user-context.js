@@ -1,4 +1,4 @@
-import { createContext, useState, useEffect } from "react";
+import { createContext, useState, useEffect, useContext } from "react";
 import { ClipLoader } from "react-spinners";
 
 const Spinner = () => <ClipLoader color="#09f" loading={true} size={35} />;
@@ -39,14 +39,19 @@ export const UserContextProvider = (props) => {
   }, []);
 
   if (loading) {
-    return <Spinner />; 
+    return <Spinner />;
   }
 
+  const logout = () => {
+    setUser(null);
+    setIsLoggedIn(false);
+  };
+
   return (
-    <UserContext.Provider value={{ user, setUser, isLoggedIn, setIsLoggedIn }}>
+    <UserContext.Provider value={{ user, isLoggedIn, logout }}>
       {props.children}
     </UserContext.Provider>
   );
 };
 
-export default UserContext;
+export const useUser = () => useContext(UserContext);
