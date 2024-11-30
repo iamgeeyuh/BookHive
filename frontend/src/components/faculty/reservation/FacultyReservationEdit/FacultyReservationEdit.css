@@ -1,0 +1,88 @@
+.faculty-reservation-edit-container {
+    display: flex;
+    flex-direction: column;
+    height: 95%;
+}
+
+.faculty-reservation-edit-container div {
+    height: auto;
+}
+
+.faculty-reservation-edit-input {
+    display: flex;
+    flex-direction: column;
+    margin-right: 1rem;
+}
+
+.faculty-reservation-edit-input label {
+    font-weight: 500;
+}
+
+.faculty-reservation-edit-input input {
+    border-radius: 1rem;
+    border: solid;
+    border-width: 0.01rem;
+    padding: 0.5rem 1rem;
+    margin-top: 0.5rem;
+}
+
+.faculty-reservation-edit-details {
+    display: flex;
+    flex-direction: row;
+    margin-top: 2rem;
+}
+
+.faculty-reservation-edit-dropdowns {
+    display: flex;
+    flex-direction: row;
+    margin-top: 2rem;
+}
+
+.faculty-reservation-edit-dropdowns div {
+    margin-right: 1rem;
+}
+
+.faculty-reservation-edit-main {
+    display:flex;
+    flex-direction: row;
+}
+
+.faculty-reservation-edit-header {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+
+.faculty-reservation-edit-header p {
+    margin-left: 1rem;
+    font-weight: 500;
+}
+
+.faculty-reservation-edit-description {
+    display: flex;
+    flex-direction: column;
+    margin-top: 2rem;
+}
+
+.faculty-reservation-edit-description label {
+    font-weight: 500;
+}
+
+.faculty-reservation-edit-description textarea {
+    border-radius: 1rem;
+    border: solid;
+    border-width: 0.01rem;
+    padding: 0.5rem 1rem;
+    margin-top: 0.5rem;
+}
+
+.faculty-reservation-edit-buttons {
+    display: flex;
+    flex-direction: row;
+    margin-top: 2rem;
+    justify-content: end;
+}
+
+.faculty-reservation-edit-buttons button {
+    margin-left: 1rem;
+}
