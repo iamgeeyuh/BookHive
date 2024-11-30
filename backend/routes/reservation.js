@@ -37,6 +37,33 @@ router.post("/", isAuthenticated, async (req, res) => {
   }
 });
 
+// GET all reservation times for a specific room on a particular day
+router.get("/:roomId", isAuthenticated, async (req, res) => {
+    try {
+      const { roomId } = req.params;
+      const { date } = req.query;
+  
+      if (!date) {
+        return res.status(400).json({ message: "Date query parameter is required." });
+      }
+  
+      const startOfDay = new Date(date);
+      startOfDay.setHours(0, 0, 0, 0);
+  
+      const endOfDay = new Date(date);
+      endOfDay.setHours(23, 59, 59, 999);
+  
+      const reservations = await Reservation.find({
+        room: roomId,
+        startTime: { $gte: startOfDay, $lt: endOfDay },
+      }).select("startTime endTime");
+  
+      res.json(reservations);
+    } catch (error) {
+      res.status(500).json({ error: error.message });
+    }
+  });
+
 // RETRIEVE all reservations
 router.get("/", isAuthenticated, async (req, res) => {
   try {
