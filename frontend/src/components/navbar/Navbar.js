@@ -35,10 +35,10 @@ const Navbar = () => {
         )}
         {user && user.role === "student" && (
           <>
-            <NavLink to="" className="navlink">
+            <NavLink to="student/reservation" className="navlink">
               Reserve
             </NavLink>
-            <NavLink to="" className="navlink">
+            <NavLink to="student/report" className="navlink">
               Report
             </NavLink>
           </>
