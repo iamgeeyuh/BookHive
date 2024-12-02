@@ -1,0 +1,14 @@
+.faculty-equipment-form-container {
+    height: auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.faculty-equipment-form-submit {
+    height: auto;
+    display: flex;
+    flex-direction: row;
+    align-items: end;
+    justify-content: space-between;
+}
