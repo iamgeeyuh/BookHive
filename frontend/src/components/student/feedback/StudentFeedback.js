@@ -10,9 +10,11 @@ const StudentFeedback = () => {
     const [attachments, setAttachments] = useState([]);
     const [feedbacks, setFeedbacks] = useState([]);
 
+    const BACKEND_URL = process.env.REACT_APP_BACKEND_URL;
+
     // Fetch authenticated user details
     useEffect(() => {
-        fetch('http://localhost:5001/auth/status', {
+        fetch(`${BACKEND_URL}/auth/status`, {
             method: 'GET',
             credentials: 'include',
         })
@@ -25,12 +27,12 @@ const StudentFeedback = () => {
             }
         })
         .catch(error => console.error('Error checking authentication status:', error));
-    }, []);
+    }, [BACKEND_URL]);
 
     // Fetch feedbacks from the backend when the component mounts
     useEffect(() => {
         if (userId) {
-            fetch(`http://localhost:5001/feedback/user/${userId}`, {
+            fetch(`${BACKEND_URL}/feedback/user/${userId}`, {
                 method: 'GET',
                 credentials: 'include',
             })
@@ -41,7 +43,7 @@ const StudentFeedback = () => {
             })
             .catch(error => console.error('Error fetching feedbacks:', error));
         }
-    }, [userId]);
+    }, [userId, BACKEND_URL]);
 
     const handleSubmit = (event) => {
         event.preventDefault();
@@ -52,7 +54,7 @@ const StudentFeedback = () => {
             attachments: attachments.map(file => URL.createObjectURL(file)), 
         };
 
-        fetch('http://localhost:5001/feedback', {
+        fetch(`${BACKEND_URL}/feedback`, {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
