@@ -1,0 +1,11 @@
+.faculty-equipment-borrowed-item-container {
+    height: auto;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    background-color: #F6F0E9;
+    border-radius: 1rem;
+    padding: 0.25rem 1rem;
+    margin-bottom: 1rem;
+    width: 80%;
+}

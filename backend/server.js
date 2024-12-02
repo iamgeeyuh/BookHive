@@ -8,7 +8,8 @@ const authRouter = require("./routes/auth");
 const roomRouter = require("./routes/room");
 const reservationRouter = require("./routes/reservation");
 const userRouter = require("./routes/user");
-const feedbackRouter = require("./routes/feedback")
+const feedbackRouter = require("./routes/feedback");
+const equipmentRouter = require("./routes/equipment");
 
 require("dotenv").config();
 
@@ -26,7 +27,7 @@ connectDB()
         resave: false,
         saveUninitialized: false,
         cookie: {
-          httpOnly: true, 
+          httpOnly: true,
           secure: false,
         },
       })
@@ -40,6 +41,7 @@ connectDB()
     app.use("/reservation", reservationRouter);
     app.use("/user", userRouter);
     app.use("/feedback", feedbackRouter);
+    app.use("/equipment", equipmentRouter);
 
     app.listen(port, () => {
       console.log(`Server running on port ${port}`);
