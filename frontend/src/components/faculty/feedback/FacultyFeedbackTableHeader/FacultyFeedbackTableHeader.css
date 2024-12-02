@@ -1,0 +1,23 @@
+.faculty-feedback-table-header-container {
+    height: auto;
+    display: flex;
+    flex-direction: row;
+    background-color: rgba(233, 149, 107, .22);
+    border: solid;
+    border-bottom: none;
+    border-width: 0.1rem;
+    padding: .5rem 1rem;
+    justify-content: space-between;
+}
+
+.faculty-feedback-table-header-page-container {
+    height: auto;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.faculty-feedback-table-header-page-container p {
+    padding: 0rem 1rem;
+}

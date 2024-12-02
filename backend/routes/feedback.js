@@ -24,15 +24,30 @@ router.post("/", authorizeRole("student"), async (req, res) => {
 
 // RETRIEVE all feedback
 router.get("/", authorizeRole("faculty"), async (req, res) => {
-  try {
-    const feedbacks = await Feedback.find()
-      .populate("user", "firstName lastName email")
-      .sort({ date: -1 }); 
-    res.json(feedbacks);
-  } catch (error) {
-    res.status(500).json({ error: error.message });
-  }
-});
+    try {
+      const page = parseInt(req.query.page) || 1;
+      const limit = 25; 
+      const skip = (page - 1) * limit;
+  
+      const totalFeedbacks = await Feedback.countDocuments();
+  
+      const feedbacks = await Feedback.find()
+        .populate("user", "firstName lastName email")
+        .sort({ date: -1 })
+        .skip(skip)
+        .limit(limit);
+  
+      res.json({
+        totalFeedbacks,
+        totalPages: Math.ceil(totalFeedbacks / limit),
+        currentPage: page,
+        feedbacks,
+        feedbacksPerPage: 25
+      });
+    } catch (error) {
+      res.status(500).json({ error: error.message });
+    }
+  });
 
 // UPDATE specific feedback
 router.put("/:id", authorizeRole("faculty"), async (req, res) => {

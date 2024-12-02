@@ -1,0 +1,50 @@
+.faculty-feedback-page-container {
+    margin-bottom: 2rem;
+    display: flex;
+    flex-direction: row;
+    background-color: #F7ECE2;
+    border-radius: 1rem;
+    padding: 1rem 1rem;
+    height: 95%;
+    overflow: hidden;
+}
+
+.faculty-feedback-page-back {
+    height: auto;
+    width: 3%;
+}
+
+.faculty-feedback-page-contents-container {
+    height: 95%;
+    display: flex;
+    flex-direction: column;
+    width: 97%;
+    justify-content: space-between;
+    overflow-y: auto;
+}
+
+.faculty-feedback-page-contents-container p {
+    margin: 0rem;
+}
+
+.faculty-feedback-page-subject {
+    font-size: x-large;
+    font-weight: bold;
+    padding-bottom: 1rem;
+}
+
+.faculty-feedback-page-user-info {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    height: auto;
+}
+
+.faculty-feedback-page-name {
+    font-weight: bold;
+    padding-right: 0.5rem;
+}
+
+.faculty-feedback-page-email {
+    font-size: smaller;
+}
