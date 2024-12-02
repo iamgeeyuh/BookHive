@@ -1,0 +1,49 @@
+.faculty-feedback-table-entries-container {
+    height: auto;
+    display: flex;
+    flex-direction: row;
+    border-top: solid;
+    border-width: 0.1rem;
+    padding: 0.05rem 1rem;
+    justify-content: space-between;
+    cursor: pointer;
+}
+
+.faculty-feedback-table-entries-info-container {
+    height: auto;
+    display: flex;
+    flex-direction: row;
+    background-color: #F6F0E9;
+    width: 80%;
+}
+
+.faculty-feedback-table-entries-email {
+    width: 10%;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.faculty-feedback-table-entries-subject {
+    font-weight: bold;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    width: 15%;
+}
+
+.faculty-feedback-table-entries-description {
+    color: #2C2C2C;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    width: 85%;
+}
+
+.faculty-feedback-table-entries-date {
+    color: #2C2C2C;
+    width: 7%;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}

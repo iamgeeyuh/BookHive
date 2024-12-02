@@ -1,0 +1,7 @@
+.faculty-feedback-table-container {
+    height: 110%;
+    border: solid;
+    border-width: 0.1rem;
+    border-top: none;
+    overflow-y: auto;
+}
