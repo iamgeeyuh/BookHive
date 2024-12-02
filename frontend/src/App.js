@@ -10,6 +10,7 @@ import FacultyRoom from "./components/faculty/rooms/FacultyRoom";
 import StudentReservation from "./components/student/reservation/StudentReservation";
 import RoomDetails from "./components/student/reservation/RoomDetails";
 import RoleProtectedRoute from "./components/RoleProtectedRoute";
+import StudentFeedback from "./components/student/feedback/StudentFeedback";
 
 const router = createBrowserRouter([
   {
@@ -59,11 +60,30 @@ const router = createBrowserRouter([
       {
         path: "student",
         children: [
-          { path: "reservation", element: <StudentReservation /> },
-          { path: "reservation/:roomId", element: <RoomDetails /> }, 
-          // { path: "room", element: <FacultyRoom /> },
-          // { path: "equipment", element: <StudentEquipment /> },
-          // { path: "feedback", element: <StudentFeedback /> },
+          { 
+            path: "reservation", 
+            element:(
+              <RoleProtectedRoute requiredRole="student">
+              <StudentReservation /> 
+              </RoleProtectedRoute>
+            )
+          },
+          { 
+            path: "reservation/:roomId", 
+            element: (
+              <RoleProtectedRoute requiredRole="student">
+                <RoomDetails /> 
+              </RoleProtectedRoute>
+            )
+          }, 
+          { 
+            path: "feedback", 
+            element: (
+              <RoleProtectedRoute requiredRole="student">
+                <StudentFeedback />
+              </RoleProtectedRoute>
+            )
+          },
         ],
       },
     ],

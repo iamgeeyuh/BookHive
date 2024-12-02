@@ -1,0 +1,188 @@
+.root{
+    height: 100vh;
+}
+
+.student-feedback-container {
+    display: flex;
+    justify-content: space-between;
+    padding: 20px;
+    gap: 20px;
+    height: auto; 
+    margin-top: -1%;
+}
+
+.make-feedback-section, .past-feedbacks {
+    flex: 1;  
+    padding: 20px; 
+    background: transparent; 
+    border-radius: 8px; 
+    height: 700px;
+}
+
+.make-feedback-section h2{
+    font-size: 40px;
+    color:#AF5E36;
+    margin-bottom: 1.5rem;
+    margin-left: 150px;
+    align-content: center;
+    display: inline-block;
+    position: relative;
+    padding-bottom: 25px;
+}
+
+.past-feedbacks h2 {
+    font-size: 40px;
+    color:#AF5E36;
+    margin-bottom: 1.5rem;
+    margin-left: 220px;
+    align-content: center;
+    display: inline-block;
+    position: relative;
+    padding-bottom: 25px;
+}
+
+.new-feedback-form{
+    background-color: #F7ECE2;
+    align-content: center;
+    height: 600px;
+    width: 80%;
+    margin-left: 10%;
+    border-radius: 10px;
+}
+
+.new-feedback-form form{
+    width: 80%;
+    margin-left: 70px;
+    margin-top: -5%;
+}
+
+.new-feedback-form label{
+    font-size: 25px;
+}
+
+.new-feedback-form form div {
+    margin-bottom: 10px; 
+    margin-left: 20px; 
+    font-size: 15px;
+}
+
+input[type="text"], textarea {
+    width: 80%;
+    padding: 8px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    margin-top: 10px;
+}
+
+input[type="radio"] {
+    margin-right: 10px;
+}
+
+.studentfeedback-button {
+    background-color: #a05010;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 4px;
+    cursor: pointer;
+    margin-top: 10px;
+    margin-left: 80%;
+    font-size: 20px;
+}
+
+.studentfeedback-button:hover {
+    background-color: orange;
+}
+
+.past-feedbacks ul {
+    margin-top: 0;
+    list-style-type: none; 
+    padding: 0;
+}
+
+.past-feedbacks li {
+    padding: 8px 0; 
+    border-bottom: 1px solid #ccc; 
+}
+
+.past-feedbacks li:last-child {
+    border-bottom: none; 
+}
+
+textarea {
+    width: 100%; 
+    height: 150px; 
+    padding: 10px; 
+    border: 1px solid #ccc; 
+    border-radius: 4px; 
+    box-sizing: border-box; 
+}
+
+textarea:focus {
+    outline: none; 
+    border-color: #a05010; 
+}
+
+.past-feedbacks {
+    flex: 1;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    padding: 20px;
+}
+
+.feedback-card {
+    flex: 0 0 48%; /* Adjust the width for two cards per row */
+    background: #F6F0E9;
+    margin-bottom: 20px;
+    padding: 10px;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    border-radius: 8px;
+    width: 500px;
+    height: 80px;
+    margin-left: 100px;
+}
+
+.feedback-card h3 {
+    font-size: 20px;
+    color: #333;
+    margin-left: 50px;
+    margin-top: 3%;
+}
+
+.feedback-card p {
+    font-size: 14px;
+    color: #666;
+}
+
+.folder {
+    margin-right: 20px; 
+}
+
+.feedback-input-button{
+    margin-top: 10px;
+    margin-left: -25px;
+}
+
+.student-feedbackcard-date{
+    margin-left: 130px;
+}
+
+.student-feedbackcard-description {
+    font-size: 16px;
+    color: #555;
+    display: flex;
+    align-items: center; /* Align description and attachments in the same row */
+    gap: 15px;
+    margin-top: 10px;
+    margin-left: 40px;
+}
+
+.feedback-attachments a {
+    margin-left: 15px; /* Space between attachments */
+    text-decoration: none;
+    color: #0077cc; /* Make attachments a distinct color */
+}
+
+.feedback-attachments a:hover {
+    text-decoration: underline;
+}

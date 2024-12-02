@@ -38,8 +38,8 @@ const Navbar = () => {
             <NavLink to="student/reservation" className="navlink">
               Reserve
             </NavLink>
-            <NavLink to="student/report" className="navlink">
-              Report
+            <NavLink to="student/feedback" className="navlink">
+              Feedback
             </NavLink>
           </>
         )}

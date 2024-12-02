@@ -9,6 +9,7 @@
     cursor: pointer;
     border: none;
     background: none;
+    color: black;
   }
   
   .room-details-content {
