@@ -5,7 +5,7 @@
     margin-top: 1rem;
     margin-bottom: 0.5rem;
     height: 90px;
-    /* width: 65%; */
+    width: 70%;
     display: flex;
     justify-content: space-between;
     flex-direction: row;
@@ -47,7 +47,25 @@
     font-weight: normal;
 }
 
-.check-in-button, .edit-cancel-button {
+.check-in-button{
+    background-color: #F2E0CE;
+    padding: 0.5rem 1rem;
+    border-radius: 8px;
+    cursor: pointer;
+    font-weight: bold;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 120px;
+    height: 50px;  
+    margin-bottom: 0.5rem;
+    margin-right: 10px;
+    margin-top: 19px;
+    margin-left: 15px;
+    font-size: 15px;
+}
+
+.edit-cancel-button {
     background-color: #F2E0CE;
     padding: 0.5rem 1rem;
     border-radius: 8px;

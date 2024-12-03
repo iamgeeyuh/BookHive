@@ -37,7 +37,7 @@ const StudentHome = () => {
 
         const data = await response.json();
         console.log("Borrowed equipment fetched successfully:", data); // Debug: Log fetched data
-        
+
         setBorrowedItems(data);
       } catch (error) {
         console.error('Error fetching borrowed items:', error);
@@ -133,18 +133,33 @@ const StudentHome = () => {
             Upcoming Reservations
           </h2>
           {reservations.length > 0 ? (
-            reservations.map((reservation) => (
-              <ReservationCard
-                key={reservation._id}
-                roomName={`${reservation.room.number}`}
-                choseDate={new Date(reservation.startTime).toISOString().split('T')[0]} // This shows the raw date in YYYY-MM-DD format
-                startTime={new Date(reservation.startTime).toISOString().split('T')[1].slice(0, 5)} // This keeps the raw time in HH:MM format
-                endTime={new Date(reservation.endTime).toISOString().split('T')[1].slice(0, 5)} // This keeps the raw time in HH:MM format
-                onCheckIn={() => handleCheckInReservation(reservation._id)}
-                onCancel={() => handleCancelReservation(reservation._id)}
-                showButtons={!checkedInReservations.includes(reservation._id)} // Hide buttons if checked in
-              />
-            ))
+            reservations.map((reservation) => {
+              // Create Date objects and manually extract the required parts
+              const startDate = new Date(reservation.startTime);
+              const endDate = new Date(reservation.endTime);
+
+              // Format the start time (include full date and time in UTC)
+              const formattedStartTime = `${startDate.toUTCString().split(' ')[2]} ${startDate.toUTCString().split(' ')[1]}, ${startDate.getUTCFullYear()}, ${startDate.getUTCHours() % 12 || 12}:${startDate.getUTCMinutes().toString().padStart(2, '0')} ${startDate.getUTCHours() >= 12 ? 'PM' : 'AM'}`;
+
+              // Format the end time (only time in UTC)
+              const formattedEndTime = `${endDate.getUTCHours() % 12 || 12}:${endDate.getUTCMinutes().toString().padStart(2, '0')} ${endDate.getUTCHours() >= 12 ? 'PM' : 'AM'}`;
+
+              console.log("Original Start Time:", reservation.startTime);
+              console.log("Original End Time:", reservation.endTime);
+              console.log("Formatted Start Time (No Conversion):", formattedStartTime);
+              console.log("Formatted End Time (No Conversion):", formattedEndTime);
+
+              return (
+                <ReservationCard
+                  key={reservation._id}
+                  roomName={`${reservation.room.number}`}
+                  choseDate={`${formattedStartTime} - ${formattedEndTime}`} // Combine start and end times
+                  onCheckIn={() => handleCheckInReservation(reservation._id)}
+                  onCancel={() => handleCancelReservation(reservation._id)}
+                  showButtons={!checkedInReservations.includes(reservation._id)} // Hide buttons if checked in
+                />
+              );
+            })
           ) : (
             <p>No upcoming reservations found.</p>
           )}
