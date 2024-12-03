@@ -81,7 +81,10 @@ router.get("/", isAuthenticated, async (req, res) => {
 // RETRIEVE a single reservation by ID
 router.get("/:id", isAuthenticated, async (req, res) => {
   try {
-    const reservation = await Reservation.findById(req.params.id)
+    const userId = req.user._id; // Extract the logged-in user's ID from the request
+
+    // const reservation = await Reservation.findById(req.params.id)
+    const reservation = await Reservation.findBy(userId)
       .populate("room", "number")
       .populate("user", "firstName lastName");
     if (!reservation) {
