@@ -5,7 +5,7 @@
     margin-top: 1rem;
     margin-bottom: 0.5rem;
     height: 90px;
-    width: 70%;
+    width: 65%;
     display: flex;
     justify-content: space-between;
     flex-direction: row;
@@ -35,11 +35,16 @@
     width: 200px;
     height: 20px;
     background-color: transparent;
+    margin-top: -1%;
+    font-size: 20px;
+    font-weight: bold;
 }
 
 .time-range{
     display: flex;
     background-color: transparent;
+    margin-top: 10px;
+    font-weight: normal;
 }
 
 .check-in-button, .edit-cancel-button {
@@ -60,7 +65,7 @@
 }
 
 .check-in-button:hover, .edit-cancel-button:hover {
-    background-color:#AF5E36;
+    background-color: orange;
     color: #4a2e19; 
 }
 

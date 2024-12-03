@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import './StudentFeedback.css'; 
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faPenToSquare, faSquareCheck, faFolder, faTimes, faCircleXmark } from '@fortawesome/free-regular-svg-icons';
+import { faPenToSquare, faSquareCheck, faFolder, faCircleXmark } from '@fortawesome/free-regular-svg-icons';
 
 const StudentFeedback = () => {
     const [userId, setUserId] = useState('');

@@ -1,102 +1,339 @@
 .room-details-container {
-    display: flex;
-    flex-direction: column;
-    margin: 20px;
-  }
-  
-  .navigation .back-button {
-    font-size: 20px;
-    cursor: pointer;
-    border: none;
-    background: none;
-    color: black;
-  }
-  
-  .room-details-content {
-    display: flex;
-    justify-content: space-between;
-  }
-  
-  .date-picker {
-    flex: 1;
-    text-align: center;
-  }
-  
-  .room-information {
-    margin-top: 22px;
-    flex: 1;
-    padding-left: 20px; /* Adjust as needed */
-    text-align: center;
-  }
-  
-  .room-information h2,
-  .room-information p,
-  .room-information h3 {
-    margin: 10px 0; /* Spacing for readability */
-  }
-  
-  .room-information ul {
-    list-style-type: none; /* Removes bullets */
-    padding: 0;
-  }
-  
-  .room-information li::before {
-    content: "✔️ ";
-    color: green; /* Example, adjust as needed */
-  }
-  
-  .booking-button {
-    padding: 10px;
-    background-color: orange; /* Placeholder, adjust to match your design */
-    border: none;
-    cursor: pointer;
-  }
-  
-  .back-button {
-    padding: 10px;
-    background-color: transparent;
-    border: none;
-    cursor: pointer;
-  }
+  display: flex;
+  flex-direction: column;
+  margin: 20px;
+}
 
-  .section-title1{
-    font-size: 40px;
-    color:#AF5E36;
-    margin-bottom: 1.5rem;
-    align-items: center;
-    display: inline-block;
-    position: relative;
-    padding-bottom: 25px;
-  }
+.navigation .back-button {
+  font-size: 20px;
+  cursor: pointer;
+  border: none;
+  background: none;
+  color: black;
+}
 
-  .section-title1::after {
-    content: ''; /* Required: this enables the pseudo-element to appear */
-    position: absolute;
-    left:-15%;
-    bottom: 0; /* Aligns the line at the bottom of the element */
-    height: 2px; /* Thickness of the line */
-    background-color: gray; /* Color of the line, change as needed */
-    width: 600px; /* Makes the line as wide as the element */
-  }
+.room-details-content {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 30px; 
+  width: 100%;
+}
 
-  .section-title2{
-    font-size: 40px;
-    color:#AF5E36;
-    margin-bottom: 1.5rem;
-    align-items: center;
-    display: inline-block;
-    position: relative;
-    padding-bottom: 25px;
-  }
+.room-details-content div{
+  height: auto;
+}
 
-  .section-title2::after {
-    content: ''; /* Required: this enables the pseudo-element to appear */
-    position: absolute;
-    left:-40%;
-    bottom: 0; /* Aligns the line at the bottom of the element */
-    height: 2px; /* Thickness of the line */
-    background-color: gray; /* Color of the line, change as needed */
-    width: 600px; /* Makes the line as wide as the element */
-  }
-  
-  
+.date-time-container {
+  margin-top: 20px;
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 20px;
+}
+
+.date-time-picker-wrapper {
+  display: flex;
+  gap: 30px;
+  align-items: flex-start;
+  margin-left: 200px;
+}
+
+.date-picker {
+  flex: 1;
+  padding: 10px;
+  border: 1px solid #E9956B;
+  border-radius: 8px;
+  box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+  text-align: center;
+}
+
+.date-picker div{
+  height: auto;
+}
+
+.time-slots {
+  flex: 1;
+  padding: 10px;
+  border: 1px solid #E9956B;
+  border-radius: 8px;
+  box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+  text-align: center;
+}
+
+.time-slots ul {
+  list-style-type: none;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+}
+
+.time-slots li button {
+  padding: 10px;
+  background-color: #E9956B;
+  border: none;
+  border-radius: 8px;
+  color: white;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  width: 100%;
+}
+
+.time-slots li button:hover {
+  background-color: #C9745F;
+}
+
+.room-information {
+  flex: 1;
+  padding-left: 10px;
+  margin-top: 40px;
+  text-align: left;
+}
+
+.room-information p,
+.room-information h3 {
+  margin-left: 100px;
+  font-size: 20px;
+}
+
+.room-information ul {
+  list-style-type: none;
+  padding: 0;
+  margin-left: 100px;
+  font-size: 20px;
+}
+
+.room-information li::before {
+  content: "✔️ ";
+  color: green;
+}
+
+.booking-button {
+  padding: 10px;
+  font-size: 20px;
+  background-color: #AF5E36; /* Original color */
+  color: white;
+  border: none;
+  cursor: pointer;
+  margin-top: 20px;
+  margin-left: 300px;
+  border-radius: 8px;
+  transition: background-color 0.3s ease, transform 0.3s ease; /* Transition for smooth effect */
+}
+
+.booking-button:hover{
+  background-color: orange; /* Darker shade for hover */
+  transform: scale(1.05); /* Slightly enlarges the button on hover */
+  box-shadow: 0px 6px 12px rgba(0, 0, 0, 0.2); /* Adds shadow for a lifted effect */
+}
+
+.back-button {
+  padding: 10px;
+  background-color: transparent;
+  border: none;
+  cursor: pointer;
+}
+
+.section-title1 {
+  font-size: 40px;
+  color: #AF5E36;
+  margin-bottom: 1.5rem;
+  margin-left: 200px;
+  display: inline-block;
+  position: relative;
+  padding-bottom: 25px;
+  text-align: left;
+  padding-left: 10px;
+}
+
+.section-title1::after {
+  content: '';
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  height: 2px;
+  background-color: gray;
+  width: 140%;
+  margin-left: -17%;
+}
+
+.section-title2 {
+  font-size: 40px;
+  color: #AF5E36;
+  margin-bottom: 1.5rem;
+  display: inline-block;
+  position: relative;
+  padding-bottom: 25px;
+  margin-top: 10px;
+  margin-left: 200px;
+}
+
+.section-title2::after {
+  content: '';
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  height: 2px;
+  background-color: gray;
+  width: 170%;
+  margin-left: -35%;
+}
+
+/* For the pop up window */
+.modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.5);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+}
+
+.modal {
+  background-color: #F5E8DE;
+  padding: 20px;
+  border-radius: 10px;
+  width: 800px;
+  box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.2);
+  position: relative;
+  height: 42%;
+}
+
+.modal div{
+  height: auto;
+}
+
+.modal h3{
+  margin-left: 200px;
+  margin-top: 40px;
+  margin-bottom: 40px;
+  font-size: 20px;
+}
+
+.modal p{
+  font-size: 20px;
+  margin-left: 30px;
+}
+
+.close-button {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  background: none;
+  border: none;
+  font-size: 20px;
+  cursor: pointer;
+}
+
+.modal-buttons {
+  display: flex;
+  margin-top: 20px;
+  margin-left: 470px;
+  gap: 30px;
+}
+
+.cancel-button, .confirm-button {
+  padding: 10px 20px;
+  border: none;
+  cursor: pointer;
+  border-radius: 5px;
+  font-size: 20px;
+}
+
+.cancel-button {
+  background-color: #ffffff;
+  color: #AF5E36;
+  transition: background-color 0.3s ease;
+}
+
+.confirm-button {
+  background-color: #AF5E36;
+  color: white;
+  transition: background-color 0.3s ease;
+}
+
+.cancel-button:hover {
+  background-color: #f0f0f0;
+}
+
+.confirm-button:hover {
+  background-color: orange;
+}
+
+/* For the time slot button */
+
+.time-slot-button.selected {
+  background-color: orange; /* Color when selected */
+}
+
+.time-slot-button.unavailable {
+  background-color: #ccc; /* Grey for unavailable */
+  cursor: not-allowed; /* Show that it's not clickable */
+}
+
+.time-slot-button:hover {
+  background-color: #ff8c00;
+}
+
+.time-slot-button.unavailable:hover {
+  background-color: #ccc; /* No hover effect for unavailable slots */
+}
+
+/* CSS for the popup overlay */
+.popup-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.5);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000; /* Ensure the popup is on top */
+}
+
+/* CSS for the submitted popup content */
+.popup {
+  background: #fff;
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0 0 15px rgba(0, 0, 0, 0.3);
+  max-width: 400px;
+  width: 100%;
+  text-align: center;
+  height: 10%;
+}
+
+.popup div{
+  height: auto;
+}
+
+.popup h3 {
+  margin-bottom: 15px;
+  color: #333;
+}
+
+.popup-ok-button {
+  padding: 10px 20px;
+  background-color: #09f;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.popup-ok-button:hover {
+  background-color: #007bff;
+}
+
+
+
+
+
