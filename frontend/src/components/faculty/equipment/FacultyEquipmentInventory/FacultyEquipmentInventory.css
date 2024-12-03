@@ -1,0 +1,83 @@
+.faculty-equipment-inventory-container {
+    height: auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.faculty-equipment-inventory-table-container {
+    border-collapse: collapse; 
+    text-align: left;
+    font-family: Arial, sans-serif;
+    width: 100%;
+    table-layout: fixed;
+}
+
+.faculty-equipment-inventory-table-container thead th {
+    border-bottom: 1px solid #ccc; 
+    border-right: 1px solid #ccc;
+    padding: 10px;
+    width: 30%;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis; 
+}
+
+.faculty-equipment-inventory-table-container thead th:last-child {
+    border-right: none;  
+}
+
+.faculty-equipment-inventory-table-container tbody td {
+    padding: 10px;
+    border-right: 1px solid #ccc;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis; 
+    width: 10px;
+} 
+
+
+.faculty-equipment-inventory-table-container tbody tr td:last-child {
+    border-right: none; 
+}
+
+.faculty-equipment-inventory-table-container tbody tr {
+    border-bottom: 1px solid #eee; 
+}
+
+.faculty-equipment-inventory-table-container tbody tr:last-child {
+    border-bottom: none; 
+} 
+
+/* Style table cells for tooltip */
+.faculty-equipment-inventory-table-container td {
+    position: relative;
+    cursor: pointer; /* Indicate interactivity */
+  }
+  
+  /* Tooltip styles */
+  .faculty-equipment-inventory-table-container td:hover::after {
+    content: attr(title); /* Use the title attribute's value */
+    position: absolute;
+    bottom: 100%; /* Position above the cell */
+    left: 50%;
+    transform: translateX(-50%);
+    background-color: #333;
+    color: #fff;
+    padding: 5px;
+    border-radius: 3px;
+    font-size: 12px;
+    white-space: nowrap;
+    z-index: 10;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+  }
+  
+  .faculty-equipment-inventory-table-container td:hover {
+    overflow: visible; /* Ensure tooltip is visible */
+  }
+  
+  .faculty-equipment-inventory-table-container td:hover::after {
+    visibility: visible;
+    opacity: 1;
+    transition: opacity 0.2s ease-in-out;
+  }

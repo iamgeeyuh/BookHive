@@ -1,0 +1,54 @@
+.faculty-equipment-container {
+    height: 95%;
+    margin-bottom: 2rem;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+.faculty-equipment-left-container {
+    height: auto;
+    width: 47%;
+}
+
+.faculty-equipment-left-contents-container {
+    height: auto;
+    background-color: #F7ECE2;
+    border-radius: 1rem;
+    padding: 2rem 2rem;
+    width: 80%;
+}
+
+.faculty-equipment-header {
+    height: auto;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    color: #AF5E36;
+    font-weight: bold;
+    font-size: x-large;
+}
+
+.faculty-equipment-header p {
+    margin-left: 0.5rem;
+}
+
+.faculty-equipment-input {
+    height: auto;
+    display: flex;
+    flex-direction: column;
+}
+
+.faculty-equipment-input label {
+    font-weight: bold;
+    margin-bottom: 0.5rem;
+}
+
+.faculty-equipment-input input {
+    background-color: #F7ECE2;
+    border: solid;
+    border-width: 0.1rem;
+    border-color: rgba(0, 0, 0, .4);
+    border-radius: 0.5rem;
+    padding: 0.5rem 1rem;
+}

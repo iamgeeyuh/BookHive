@@ -78,35 +78,40 @@ router.get("/:userId/equipment", isAuthenticated, async (req, res) => {
   }
 });
 
-// ADD equipment to a user if available
-router.post("/:userId/equipment", authorizeRole("faculty"), async (req, res) => {
+// ADD equipment to a user using NetID and equipment ID
+router.post("/equipment", authorizeRole("faculty"), async (req, res) => {
+  console.log("here")
   try {
-    const { userId } = req.params;
-    const { type, dueDate } = req.body;
+    const { netId, equipmentId } = req.body;
 
-    const equipment = await Equipment.findOne({ type, available: true });
+    const user = await User.findOne({ email: { $regex: `^${netId}@` } });
+    if (!user) {
+      return res.status(404).json({ message: "User with the given NetID not found." });
+    }
+
+    const equipment = await Equipment.findOne({ _id: equipmentId, available: true });
     if (!equipment) {
       return res
         .status(400)
-        .json({ message: "Requested equipment type is not available." });
+        .json({ message: "Requested equipment is not available or does not exist." });
     }
 
+    const borrowDate = new Date();
+    const dueDate = new Date();
+    dueDate.setDate(borrowDate.getDate() + 7);
+
     equipment.available = false;
-    equipment.date = new Date();
+    equipment.date = borrowDate;
     equipment.dueDate = dueDate;
     await equipment.save();
 
-    const user = await User.findByIdAndUpdate(
-      userId,
-      { $push: { equipment: equipment._id } },
-      { new: true }
-    ).populate("equipment", "type available dueDate");
+    user.equipment.push(equipment._id);
+    await user.save();
 
-    if (!user) {
-      return res.status(404).json({ message: "User not found" });
-    }
-
-    res.status(201).json({ message: "Equipment added to user.", equipment });
+    res.status(201).json({
+      message: `Equipment "${equipment.type}" successfully assigned to user "${user.email}".`,
+      equipment,
+    });
   } catch (error) {
     res.status(500).json({ error: error.message });
   }

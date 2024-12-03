@@ -14,7 +14,6 @@ const FacultyReservationEdit = ({ goBack, reservationToEdit }) => {
 
   const [rooms, setRooms] = useState([]);
   const [users, setUsers] = useState([]);
-  const [pageTitle, setPageTitle] = useState("Create New Reservation");
   const [buttonLabel, setButtonLabel] = useState("Create Reservation");
 
   useEffect(() => {
@@ -159,7 +158,7 @@ const FacultyReservationEdit = ({ goBack, reservationToEdit }) => {
     <div className="faculty-reservation-edit-container">
       <div className="faculty-reservation-edit-header">
         <FaArrowLeft onClick={() => goBack()} style={{ cursor: "pointer" }} />
-        <p>{pageTitle}</p>
+        <p>Create New Reservation</p>
       </div>
       <div className="faculty-reservation-edit-main">
         <div className="faculty-reservation-edit-inputs">
