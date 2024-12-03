@@ -50,6 +50,7 @@ router.get("/:id", isAuthenticated, async (req, res) => {
 
 // UPDATE a room by ID
 router.put("/:id", authorizeRole("faculty"), async (req, res) => {
+  console.log(req.params.id)
   try {
     const updatedRoom = await Room.findByIdAndUpdate(req.params.id, req.body, {
       new: true,
@@ -58,6 +59,7 @@ router.put("/:id", authorizeRole("faculty"), async (req, res) => {
     if (!updatedRoom) {
       return res.status(404).json({ message: "Room not found" });
     }
+    console.log(updatedRoom)
     res.json(updatedRoom);
   } catch (error) {
     res.status(400).json({ error: error.message });

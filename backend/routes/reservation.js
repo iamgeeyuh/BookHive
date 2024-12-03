@@ -2,6 +2,7 @@ const express = require("express");
 const router = express.Router();
 const Reservation = require("../models/Reservation");
 const { isAuthenticated, authorizeRole } = require("../middleware/auth");
+const moment = require("moment-timezone");
 
 // CREATE a new reservation
 router.post("/", isAuthenticated, async (req, res) => {
@@ -42,6 +43,14 @@ router.get("/:roomId", isAuthenticated, async (req, res) => {
   try {
     const { roomId } = req.params;
     const { date } = req.query;
+    const inputDate = moment.tz(date, "America/New_York")
+    console.log(inputDate)
+    
+    // Format the new date as needed (e.g., ISO string)
+    const previousDate = inputDate.toISOString().split("T")[0]; // Only keeps the YYYY-MM-DD part
+    
+    console.log(roomId)
+    console.log(date)
 
     if (!date) {
       return res
@@ -49,11 +58,12 @@ router.get("/:roomId", isAuthenticated, async (req, res) => {
         .json({ message: "Date query parameter is required." });
     }
 
-    const startOfDay = new Date(date);
-    startOfDay.setHours(0, 0, 0, 0);
+    const startOfDay = inputDate.startOf("day").toDate();
+    const endOfDay = inputDate.endOf("day").toDate();
 
-    const endOfDay = new Date(date);
-    endOfDay.setHours(23, 59, 59, 999);
+
+    console.log(startOfDay)
+    console.log(endOfDay)
 
     const reservations = await Reservation.find({
       room: roomId,

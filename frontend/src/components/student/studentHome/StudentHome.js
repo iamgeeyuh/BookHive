@@ -5,6 +5,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faMicroscope } from '@fortawesome/free-solid-svg-icons';
 import { faCalendarCheck } from '@fortawesome/free-regular-svg-icons';
 import { useUser } from "../../../context/user-context";
+import moment from "moment";
 
 const StudentHome = () => {
   const { user } = useUser(); // Get the user object from UserContext
@@ -135,14 +136,10 @@ const StudentHome = () => {
           {reservations.length > 0 ? (
             reservations.map((reservation) => {
               // Create Date objects and manually extract the required parts
-              const startDate = new Date(reservation.startTime);
-              const endDate = new Date(reservation.endTime);
 
-              // Format the start time (include full date and time in UTC)
-              const formattedStartTime = `${startDate.toUTCString().split(' ')[2]} ${startDate.toUTCString().split(' ')[1]}, ${startDate.getUTCFullYear()}, ${startDate.getUTCHours() % 12 || 12}:${startDate.getUTCMinutes().toString().padStart(2, '0')} ${startDate.getUTCHours() >= 12 ? 'PM' : 'AM'}`;
+              const formattedStartTime = moment(reservation.startTime).local().format("MMM DD, YYYY, h A");
 
-              // Format the end time (only time in UTC)
-              const formattedEndTime = `${endDate.getUTCHours() % 12 || 12}:${endDate.getUTCMinutes().toString().padStart(2, '0')} ${endDate.getUTCHours() >= 12 ? 'PM' : 'AM'}`;
+              const formattedEndTime = moment(reservation.endTime).local().format("h A");
 
               console.log("Original Start Time:", reservation.startTime);
               console.log("Original End Time:", reservation.endTime);

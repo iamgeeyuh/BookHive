@@ -3,6 +3,7 @@ import ReservationCard from "../../student/reservation/ReservationCard"
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faMicroscope } from '@fortawesome/free-solid-svg-icons';
 import { faCalendarCheck } from '@fortawesome/free-regular-svg-icons';
+import moment from "moment";
 
 const FacultyHome = () => {
   const [borrowedItems, setBorrowedItems] = useState([]);
@@ -104,18 +105,28 @@ const FacultyHome = () => {
             Upcoming Reservations
           </h2>
           {reservations.length > 0 ? (
-            reservations.map((reservation) => (
-              <ReservationCard
-                key={reservation._id}
-                roomName={`${reservation.room.number}`}
-                choseDate={new Date(reservation.startTime).toISOString().split('T')[0]} // This shows the raw date in YYYY-MM-DD format
-                startTime={new Date(reservation.startTime).toISOString().split('T')[1].slice(0, 5)} // This keeps the raw time in HH:MM format
-                endTime={new Date(reservation.endTime).toISOString().split('T')[1].slice(0, 5)} // This keeps the raw time in HH:MM format
-                onCheckIn={() => handleCheckInReservation(reservation._id)}
-                onCancel={() => handleCancelReservation(reservation._id)}
-                showButtons={!checkedInReservations.includes(reservation._id)} // Hide buttons if checked in
-              />
-            ))
+            reservations.map((reservation) => {
+              // Create Date objects and manually extract the required parts
+              const formattedStartTime = moment(reservation.startTime).local().format("MMM DD, YYYY, h A");
+
+              const formattedEndTime = moment(reservation.endTime).local().format("h A");
+
+              console.log("Original Start Time:", reservation.startTime);
+              console.log("Original End Time:", reservation.endTime);
+              console.log("Formatted Start Time (No Conversion):", formattedStartTime);
+              console.log("Formatted End Time (No Conversion):", formattedEndTime);
+
+              return (
+                <ReservationCard
+                  key={reservation._id}
+                  roomName={`${reservation.room.number}`}
+                  choseDate={`${formattedStartTime} - ${formattedEndTime}`} // Combine start and end times
+                  onCheckIn={() => handleCheckInReservation(reservation._id)}
+                  onCancel={() => handleCancelReservation(reservation._id)}
+                  showButtons={!checkedInReservations.includes(reservation._id)} // Hide buttons if checked in
+                />
+              );
+            })
           ) : (
             <p>No upcoming reservations found.</p>
           )}
@@ -129,7 +140,7 @@ const FacultyHome = () => {
             {borrowedItems.length > 0 ? (
               borrowedItems.map((item, index) => (
                 <li key={index} className="borrowed-item">
-                  <span>{item.equipment.type}</span>
+                  <span style={{fontWeight: "bold"}}>{item.equipment.type}: {item.user.email.split("@")[0]}</span>
                   <span>Due {new Date(item.equipment.dueDate).toLocaleDateString()}</span>
                 </li>
               ))

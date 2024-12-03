@@ -3,8 +3,8 @@ import moment from "moment";
 
 const FacultyFeedbackTableEntries = ({ feedback, onFeedbackClick }) => {
   const formatDate = (timestamp) => {
-    const date = moment(timestamp);
-    const now = moment();
+    const date = moment(timestamp).local();
+    const now = moment().local();
 
     if (date.isSame(now, "day")) {
       return date.format("hh:mm A");

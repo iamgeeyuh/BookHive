@@ -86,3 +86,10 @@
 .faculty-reservation-edit-buttons button {
     margin-left: 1rem;
 }
+
+.faculty-reservation-edit-datetime {
+    display: flex;
+    flex-direction: row;
+    height: auto;
+    margin-top: 1rem;
+}
