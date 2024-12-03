@@ -14,7 +14,7 @@ const FacultyHome = () => {
   useEffect(() => {
     const fetchBorrowedItems = async () => {
       try {
-        const response = await fetch(`${BACKEND_URL}/equipment`, {
+        const response = await fetch(`${BACKEND_URL}/equipment/borrowed`, {
           method: 'GET',
           credentials: 'include',
           headers: {
@@ -27,6 +27,7 @@ const FacultyHome = () => {
         }
 
         const data = await response.json();
+        console.log(data)
         setBorrowedItems(data);
       } catch (error) {
         console.error('Error fetching borrowed items:', error);
@@ -128,8 +129,8 @@ const FacultyHome = () => {
             {borrowedItems.length > 0 ? (
               borrowedItems.map((item, index) => (
                 <li key={index} className="borrowed-item">
-                  <span>{item.type}</span>
-                  <span>Due {new Date(item.dueDate).toLocaleDateString()}</span>
+                  <span>{item.equipment.type}</span>
+                  <span>Due {new Date(item.equipment.dueDate).toLocaleDateString()}</span>
                 </li>
               ))
             ) : (
