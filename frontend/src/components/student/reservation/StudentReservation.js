@@ -120,17 +120,18 @@ const StudentReservation = () => {
   return (
     <div className="reservation-container">
       <div className="filter-bar">
-        <select onChange={e => setCapacityFilter(e.target.value ? parseInt(e.target.value, 10) : null)}>
-          <option value="">Capacity</option>
-          <option value="2">1-2 People</option>
-          <option value="5">5 People</option>
-          <option value="8">8 People</option>
-        </select>
+      <h3>Find by: </h3>
         <select onChange={e => setTypeFilter(e.target.value || null)}>
           <option value="">Type of space</option>
           <option value="Individual Study Room">Individual Study Rooms</option>
           <option value="Group Study Room">Group Study Rooms</option>
           <option value="Large Group Study Room">Large Group Study Rooms</option>
+        </select>
+        <select onChange={e => setCapacityFilter(e.target.value ? parseInt(e.target.value, 10) : null)}>
+          <option value="">Capacity</option>
+          <option value="2">1-2 People</option>
+          <option value="5">5 People</option>
+          <option value="8">8 People</option>
         </select>
         <select onChange={e => setNoiseLevelFilter(e.target.value || null)}>
           <option value="">Noise Level</option>

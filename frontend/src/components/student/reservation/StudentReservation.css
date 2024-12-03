@@ -21,23 +21,26 @@
     align-items: center; /* Centering the content vertically */
     height: 95%;
   }
-  
-  .filter-bar {
-    width: 1000px; /* Full width of its container */
-    height: 40px;
-    padding: 10px 20px; /* Reduced padding for a more compact look */
-    background-color: transparent;
-    margin-top: 20px;
-    margin-left: -30%;
-    margin-bottom: 30px; /* Space before the room grid starts */
-    border-radius: 8px; /* Optional: rounded corners */
-  }
 
-  .filter-label {
-    margin-right: 5px; /* Space between the label and the first dropdown */
-    margin-top: 8px;
+  .filter-bar {
+    display: flex; /* Use flexbox for alignment */
+    align-items: center;
+    justify-content: start; /* Align items from the start horizontally */
+    gap: 10px; /* Add spacing between items */
+    width: 100%; /* Full width of its container */
+    padding: 10px 20px; /* Padding for internal spacing */
+    margin-top: 20px;
+    margin-bottom: 30px;
+    margin-left: 250px;
+    background-color: transparent;
+    border-radius: 8px;
+    height: auto;
+  }
+  
+  .filter-bar h3 {
+    margin: 0; /* Remove default margin */
+    font-size: 20px; /* Match font size */
     font-weight: bold;
-    font-size: 20px;
   }
   
   .filter-bar select {
@@ -49,6 +52,13 @@
     width: 200px;
     height: 40px;
     background-color: #E9956B;
+  }
+
+  .filter-label {
+    margin-right: 5px; /* Space between the label and the first dropdown */
+    margin-top: 8px;
+    font-weight: bold;
+    font-size: 20px;
   }
   
   .filter-bar button {
