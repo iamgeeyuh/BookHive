@@ -4,8 +4,10 @@ import ReservationCard from "../reservation/ReservationCard";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faMicroscope } from '@fortawesome/free-solid-svg-icons';
 import { faCalendarCheck } from '@fortawesome/free-regular-svg-icons';
+import { useUser } from "../../../context/user-context";
 
 const StudentHome = () => {
+  const { user } = useUser(); // Get the user object from UserContext
   const [borrowedItems, setBorrowedItems] = useState([]);
   const [reservations, setReservations] = useState([]);
   const [checkedInReservations, setCheckedInReservations] = useState([]); // Tracks reservations that have been checked in
@@ -14,37 +16,14 @@ const StudentHome = () => {
   const BACKEND_URL = process.env.REACT_APP_BACKEND_URL;
 
   useEffect(() => {
-    // Fetch authenticated user details to get the user ID
-    const fetchUserId = async () => {
-      try {
-        const response = await fetch(`${BACKEND_URL}/auth/status`, {
-          method: 'GET',
-          credentials: 'include',
-        });
-
-        if (!response.ok) {
-          throw new Error("Failed to authenticate user");
-        }
-
-        const data = await response.json();
-        if (data.user && data.user._id) {
-          setUserId(data.user._id);
-        }
-      } catch (error) {
-        console.error('Error fetching user ID:', error);
-      }
-    };
-
-    fetchUserId();
-  }, [BACKEND_URL]);
-
-  useEffect(() => {
-    if (!userId) return;
+    if (!user || !user._id) return;
 
     // Fetch borrowed items
     const fetchBorrowedItems = async () => {
       try {
-        const response = await fetch(`${BACKEND_URL}/user/${userId}/equipment`, {
+        console.log("Fetching borrowed items for user:", user._id); // Debug: Log the user ID
+
+        const response = await fetch(`${BACKEND_URL}/user/${user._id}/equipment`, {
           method: 'GET',
           credentials: 'include',
           headers: {
@@ -57,6 +36,8 @@ const StudentHome = () => {
         }
 
         const data = await response.json();
+        console.log("Borrowed equipment fetched successfully:", data); // Debug: Log fetched data
+        
         setBorrowedItems(data);
       } catch (error) {
         console.error('Error fetching borrowed items:', error);
@@ -64,35 +45,49 @@ const StudentHome = () => {
     };
 
     fetchBorrowedItems();
-  }, [BACKEND_URL, userId]);
+  }, [BACKEND_URL, user]);
 
   useEffect(() => {
-    if (!userId) return;
-
+    if (!user || !user._id) return;
+  
     // Fetch reservations for the user
     const fetchReservations = async () => {
       try {
-        const response = await fetch(`${BACKEND_URL}/reservation?userId=${userId}`, {
-          method: 'GET',
-          credentials: 'include',
+        const response = await fetch(`${BACKEND_URL}/reservation`, {
+          method: "GET",
+          credentials: "include",
           headers: {
             "Content-Type": "application/json",
           },
         });
-
+  
         if (!response.ok) {
           throw new Error("Failed to fetch reservation data");
         }
-
+  
         const data = await response.json();
-        setReservations(data);
+  
+        // Log reservations and their user IDs for debugging
+        console.log("Fetched reservations:", data);
+  
+        // Filter reservations to include only those for the logged-in user
+        const userReservations = data.filter((reservation) => {
+          const reservationUserId = reservation.user._id || reservation.user; // Handle both object and string cases
+          console.log(`Reservation User ID: ${reservationUserId}`);
+          console.log(`Current User ID: ${user._id}`);
+          return reservationUserId === user._id;
+        });
+  
+        console.log("Filtered reservations:", userReservations);
+  
+        setReservations(userReservations);
       } catch (error) {
-        console.error('Error fetching reservations:', error);
+        console.error("Error fetching reservations:", error);
       }
     };
-
+  
     fetchReservations();
-  }, [BACKEND_URL, userId]);
+  }, [BACKEND_URL, user]); 
 
   // Handle reservation cancellation
   const handleCancelReservation = async (reservationId) => {
