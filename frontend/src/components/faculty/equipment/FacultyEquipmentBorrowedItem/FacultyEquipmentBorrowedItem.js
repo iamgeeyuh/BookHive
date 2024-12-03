@@ -7,7 +7,7 @@ const FacultyEquipmentBorrowedItem = ({ equipment }) => {
       <p style={{ fontWeight: "bold" }}>{`${
         equipment.user.email.split("@")[0]
       }: ${equipment.equipment.type}`}</p>
-      <p>{moment(equipment.equipment.dueDate).format("MMM D, YYYY")}</p>
+      <p>{moment(equipment.equipment.dueDate).local().format("MMM D, YYYY")}</p>
     </div>
   );
 };
