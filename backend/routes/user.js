@@ -1,6 +1,7 @@
 const express = require("express");
 const router = express.Router();
 const User = require("../models/User");
+const Equipment = require("../models/Equipment");
 const { isAuthenticated, authorizeRole } = require("../middleware/auth");
 
 // GET all users
@@ -30,20 +31,49 @@ router.get("/student", isAuthenticated, async (req, res) => {
 });
 
 // RETRIEVE all equipment assigned to a user
+// router.get("/:userId/equipment", isAuthenticated, async (req, res) => {
+//   try {
+//     const { userId } = req.params;
+
+//     const user = await User.findById(userId).populate(
+//       "equipment",
+//       "type available dueDate"
+//     );
+//     if (!user) {
+//       return res.status(404).json({ message: "User not found" });
+//     }
+
+//     res.json(user.equipment);
+//   } catch (error) {
+//     res.status(500).json({ error: error.message });
+//   }
+// });
 router.get("/:userId/equipment", isAuthenticated, async (req, res) => {
+  console.log("At this line");
   try {
     const { userId } = req.params;
+    console.log("Fetching equipment for userId:", userId);
 
-    const user = await User.findById(userId).populate(
-      "equipment",
-      "type available dueDate"
-    );
+    // Check if user exists before attempting to populate equipment
+    const user = await User.findById(userId);
     if (!user) {
+      console.error("User not found for ID:", userId);
       return res.status(404).json({ message: "User not found" });
     }
 
-    res.json(user.equipment);
+    // Populate equipment data
+    const populatedUser = await user.populate("equipment", "type available dueDate");
+    console.log("Populated user data:", populatedUser);
+
+    if (!populatedUser.equipment || populatedUser.equipment.length === 0) {
+      console.warn("No equipment found for the user:", userId);
+      return res.status(200).json([]);
+    }
+
+    console.log("Fetched equipment data:", populatedUser.equipment);
+    res.json(populatedUser.equipment);
   } catch (error) {
+    console.error("Error fetching equipment:", error);  // Log entire error object for debugging
     res.status(500).json({ error: error.message });
   }
 });

@@ -137,18 +137,39 @@ router.put("/:id", authorizeRole("faculty"), async (req, res) => {
 });
 
 // DELETE a reservation by ID
-router.delete("/:id", authorizeRole("faculty"), async (req, res) => {
+router.delete("/:id", isAuthenticated, async (req, res) => {
   try {
-    const deletedReservation = await Reservation.findByIdAndDelete(
-      req.params.id
-    );
-    if (!deletedReservation) {
+    // Only allow the user who made the reservation or a faculty/admin to delete it
+    const reservation = await Reservation.findById(req.params.id);
+
+    if (!reservation) {
       return res.status(404).json({ message: "Reservation not found" });
     }
+
+    if (req.user.role !== "faculty" && req.user._id.toString() !== reservation.user.toString()) {
+      return res.status(403).json({ message: "You are not authorized to delete this reservation" });
+    }
+
+    const deletedReservation = await Reservation.findByIdAndDelete(req.params.id);
+
     res.json({ message: "Reservation deleted successfully" });
   } catch (error) {
     res.status(500).json({ error: error.message });
   }
 });
+
+// router.delete("/:id", authorizeRole("faculty"), async (req, res) => {
+//   try {
+//     const deletedReservation = await Reservation.findByIdAndDelete(
+//       req.params.id
+//     );
+//     if (!deletedReservation) {
+//       return res.status(404).json({ message: "Reservation not found" });
+//     }
+//     res.json({ message: "Reservation deleted successfully" });
+//   } catch (error) {
+//     res.status(500).json({ error: error.message });
+//   }
+// });
 
 module.exports = router;
