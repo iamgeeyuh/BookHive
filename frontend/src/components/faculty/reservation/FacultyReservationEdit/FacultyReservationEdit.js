@@ -41,13 +41,6 @@ const FacultyReservationEdit = ({ goBack, reservationToEdit }) => {
         if (response.ok) {
           const roomData = await response.json();
           setRooms(roomData);
-
-          if (roomData.length > 0) {
-            setReservationData((prevData) => ({
-              ...prevData,
-              room: roomData[0]._id,
-            }));
-          }
         } else {
           console.error("Failed to fetch rooms");
         }
@@ -67,13 +60,6 @@ const FacultyReservationEdit = ({ goBack, reservationToEdit }) => {
         if (response.ok) {
           const userData = await response.json();
           setUsers(userData);
-
-          if (userData.length > 0) {
-            setReservationData((prevData) => ({
-              ...prevData,
-              user: userData[0]._id,
-            }));
-          }
         } else {
           console.error("Failed to fetch users");
         }
@@ -84,9 +70,7 @@ const FacultyReservationEdit = ({ goBack, reservationToEdit }) => {
 
     fetchRooms();
     fetchUsers();
-  }, [BACKEND_URL]);
 
-  useEffect(() => {
     if (reservationToEdit) {
       setReservationData({
         room: reservationToEdit.room._id,
@@ -103,11 +87,15 @@ const FacultyReservationEdit = ({ goBack, reservationToEdit }) => {
       });
       setButtonLabel("Save Changes");
     }
-  }, [reservationToEdit]);
+
+    console.log(reservationToEdit)
+    console.log(reservationData)
+  }, []);
 
   useEffect(() => {
     const fetchAvailableSlots = async () => {
       console.log(reservationData.room);
+      console.log(selectedDate)
       console.log(selectedDate.toISOString().slice(0, 10));
       try {
         const response = await fetch(
@@ -234,7 +222,7 @@ const FacultyReservationEdit = ({ goBack, reservationToEdit }) => {
             onChange={(value) =>
               setReservationData({ ...reservationData, room: value })
             }
-            value={reservationData.room._id}
+            value={reservationData.room}
           />
           <Dropdown
             values={users.map((user) => ({
@@ -245,7 +233,7 @@ const FacultyReservationEdit = ({ goBack, reservationToEdit }) => {
             onChange={(value) =>
               setReservationData({ ...reservationData, user: value })
             }
-            value={reservationData.user._id}
+            value={reservationData.user}
           />
         </div>
         <div style={{ marginLeft: "5rem" }}>
