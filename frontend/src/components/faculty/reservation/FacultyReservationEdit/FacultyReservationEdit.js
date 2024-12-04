@@ -96,7 +96,11 @@ const FacultyReservationEdit = ({ goBack, reservationToEdit }) => {
           .slice(0, 16),
         endTime: new Date(reservationToEdit.endTime).toISOString().slice(0, 16),
       });
-      setSelectedDate(new Date(reservationToEdit.startTime));
+      setSelectedDate(() => {
+        const date = new Date(reservationToEdit.startTime);
+        date.setHours(0, 0, 0, 0);
+        return date;
+      });
       setButtonLabel("Save Changes");
     }
   }, [reservationToEdit]);

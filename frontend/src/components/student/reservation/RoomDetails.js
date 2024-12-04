@@ -306,7 +306,11 @@ const RoomDetails = () => {
 
   const { user } = useUser(); // Get the current user context
 
-  const [selectedDate, setSelectedDate] = useState(new Date());
+  const [selectedDate, setSelectedDate] = useState(() => {
+    const date = new Date();
+    date.setHours(0, 0, 0, 0); // Set to midnight
+    return date;
+  });
   const [availableSlots, setAvailableSlots] = useState([]);
   const [selectedTimeSlots, setSelectedTimeSlots] = useState([]);
   const [showModal, setShowModal] = useState(false);
@@ -347,23 +351,6 @@ const RoomDetails = () => {
   useEffect(() => {
     const fetchAvailableSlots = async () => {
       try {
-        // Extract year, month, and date to avoid timezone issues
-        const year = selectedDate.getFullYear();
-        const month = selectedDate.getMonth(); // Note: getMonth() returns 0-11
-        const day = selectedDate.getDate();
-
-        // Construct a date string that represents the local date without converting to UTC
-        const localDateString = `${year}-${String(month + 1).padStart(
-          2,
-          "0"
-        )}-${String(day).padStart(2, "0")}`;
-
-        console.log(
-          "Fetching reservation slots for room ID:",
-          roomId,
-          "and date:",
-          localDateString
-        );
 
         // Use the constructed localDateString for your API call to avoid timezone issues
         const response = await fetch(
